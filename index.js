@@ -10,7 +10,7 @@ var SliderNative = function(
           console.log(this.props);
             // The slider's an input.  That's all we need.  We'll do the rest in JS.
             return (
-                React.createElement("input", null)
+                React.createElement("input", { name: this.props.name })
             );
         },
         componentDidMount: function () {
