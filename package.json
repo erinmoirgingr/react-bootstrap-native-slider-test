@@ -37,6 +37,7 @@
     "react": "^0.12.1"
   },
   "devDependencies": {
+    "react": "^0.12.1",
     "browserify": "^9.0.3",
     "react-tools": "~0.11.2"
   }
