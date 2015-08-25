@@ -53,4 +53,4 @@ var SliderNative = function(
     });
 }
 
-module.exports = SliderNative(require('react'), require('bootstrap-slider'));
+module.exports = SliderNative(require('react'), require('./javascript/libs/bootstrap-slider'));
