@@ -32,7 +32,8 @@
     "bootstrap-slider": "^4"
   },
   "peerDependencies": {
-    "react": ">=0.13.3"
+    "react": ">=0.13.3",
+    "jquery": ""
   },
   "devDependencies": {
     "browserify": "^9.0.3",
