@@ -1,10 +1,8 @@
 var SliderNative = function(
     React,
-    $,
-    BootstrapSlider,
-    BrowserDetectMixin) {
+    BootstrapSlider) {
     
-    return React.createClass({displayName: "BootstrapSlider",
+    return React.createClass({
         // Bootstrap-slider.js from https://github.com/seiyria/bootstrap-slider
         render: function () {
           console.log(this.props);
@@ -43,36 +41,16 @@ var SliderNative = function(
             var currentlyEnabled = $(this.mySlider).bootstrapSlider("isEnabled");
             if (sliderEnable) {
                 if (!currentlyEnabled) {
-                    $(this.mySlider).bootstrapSlider("enable");
+                  $(this.mySlider).bootstrapSlider("enable");
                 }
             }
             else {
                 if (currentlyEnabled) {
-                    $(this.mySlider).bootstrapSlider("disable");
+                  $(this.mySlider).bootstrapSlider("disable");
                 }
             }
         }
     });
 }
 
-    if (typeof module === 'object' && module.exports) {
-        module.exports = SliderNative(
-            require('react'),
-            require('jquery'),
-            require('bootstrap-slider'),
-            require('./javascript/libs/browserdetect-mixin.js'));
-    } else if (typeof define === 'function' && define.amd) {
-        define(function(require) {
-            return SliderNative(
-                require('react'),
-                require('jquery'),
-                require('bootstrap-slider'),
-                require('./javascript/libs/browserdetect-mixin.js'));
-        });
-    } else {
-        window.SliderNative = SliderNative(
-            window.React,
-            window.$,
-            window.BootstrapSlider,
-            window.BrowserDetectMixin);
-    }
+module.exports = SliderNative(require('react'), require('bootstrap-slider'));
