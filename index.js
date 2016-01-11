@@ -1,5 +1,6 @@
 var SliderNative = function(
     React,
+    ReactDOM,
     BootstrapSlider) {
 
     return React.createClass({
@@ -13,7 +14,7 @@ var SliderNative = function(
         componentDidMount: function () {
             var that = this;
             $.fn.bootstrapSlider = $.fn.bootstrapSlider || $.fn.slider;
-            this.mySlider = $(this.getDOMNode()).bootstrapSlider({
+            this.mySlider = $(ReactDOM.findDOMNode(this)).bootstrapSlider({
                 "tooltip": this.props.tooltip || "show"
             });
             this.updateSliderValues();
@@ -52,4 +53,4 @@ var SliderNative = function(
     });
 }
 
-module.exports = SliderNative(require('react'), require('./javascript/libs/bootstrap-slider'));
+module.exports = SliderNative(require('react'), require('react-dom'), require('./javascript/libs/bootstrap-slider'));
