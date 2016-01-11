@@ -1,11 +1,10 @@
 var SliderNative = function(
     React,
     BootstrapSlider) {
-    
+
     return React.createClass({
         // Bootstrap-slider.js from https://github.com/seiyria/bootstrap-slider
         render: function () {
-          console.log(this.props);
             // The slider's an input.  That's all we need.  We'll do the rest in JS.
             return (
                 React.createElement("input", { name: this.props.name })
@@ -30,7 +29,7 @@ var SliderNative = function(
             this.updateSliderValues();
         },
         updateSliderValues: function () {
-            
+
             $(this.mySlider)
                 .bootstrapSlider("setAttribute", "min", parseInt(this.props.min) )
                 .bootstrapSlider("setAttribute", "max", parseInt(this.props.max) )
