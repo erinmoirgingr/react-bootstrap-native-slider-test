@@ -4,11 +4,16 @@ var SliderNative = function(
     BootstrapSlider) {
 
     return React.createClass({
+        getInitialState: function() {
+            return {
+                value: this.props.value
+            };
+        },
         // Bootstrap-slider.js from https://github.com/seiyria/bootstrap-slider
         render: function () {
             // The slider's an input.  That's all we need.  We'll do the rest in JS.
             return (
-                React.createElement("input", { name: this.props.name })
+                React.createElement("input", { name: this.props.name, value: this.state.value, readOnly: true })
             );
         },
         componentDidMount: function () {
@@ -24,8 +29,36 @@ var SliderNative = function(
                 };
                 fakeEvent.target.value = e.value.newValue;
                 // that.props.handleChange(fakeEvent);
+
+                that.setState({
+                    value: e.value.newValue
+                });
             });
         },
+        componentDidUpdate: function () {
+            this.updateSliderValues();
+        },
+        updateSliderValues: function () {
+
+            $(this.mySlider)
+                .bootstrapSlider("setAttribute", "min", parseInt(this.props.min) )
+                .bootstrapSlider("setAttribute", "max", parseInt(this.props.max) )
+                .bootstrapSlider("setAttribute", "step", parseInt(this.props.step) )
+                .bootstrapSlider("setValue", parseInt(this.state.value, 10) );
+
+            var sliderEnable = this.props.disabled === "disabled" ? false : true;
+            var currentlyEnabled = $(this.mySlider).bootstrapSlider("isEnabled");
+            if (sliderEnable) {
+                if (!currentlyEnabled) {
+                  $(this.mySlider).bootstrapSlider("enable");
+                }
+            }
+            else {
+                if (currentlyEnabled) {
+                  $(this.mySlider).bootstrapSlider("disable");
+                }
+            }
+        }
     });
 }
 
