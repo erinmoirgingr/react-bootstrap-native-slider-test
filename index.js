@@ -26,30 +26,6 @@ var SliderNative = function(
                 // that.props.handleChange(fakeEvent);
             });
         },
-        componentDidUpdate: function () {
-            this.updateSliderValues();
-        },
-        updateSliderValues: function () {
-
-            $(this.mySlider)
-                .bootstrapSlider("setAttribute", "min", parseInt(this.props.min) )
-                .bootstrapSlider("setAttribute", "max", parseInt(this.props.max) )
-                .bootstrapSlider("setAttribute", "step", parseInt(this.props.step) )
-                .bootstrapSlider("setValue", parseInt(this.props.value, 10) );
-
-            var sliderEnable = this.props.disabled === "disabled" ? false : true;
-            var currentlyEnabled = $(this.mySlider).bootstrapSlider("isEnabled");
-            if (sliderEnable) {
-                if (!currentlyEnabled) {
-                  $(this.mySlider).bootstrapSlider("enable");
-                }
-            }
-            else {
-                if (currentlyEnabled) {
-                  $(this.mySlider).bootstrapSlider("disable");
-                }
-            }
-        }
     });
 }
 
