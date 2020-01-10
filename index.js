@@ -3,20 +3,23 @@ var SliderNative = function(
     ReactDOM,
     BootstrapSlider) {
 
-    return React.createClass({
-        getInitialState: function() {
-            return {
+    return class Slider extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
                 value: this.props.value
-            };
-        },
+            }
+        }
+
         // Bootstrap-slider.js from https://github.com/seiyria/bootstrap-slider
-        render: function () {
+        render() {
             // The slider's an input.  That's all we need.  We'll do the rest in JS.
             return (
                 React.createElement("input", { name: this.props.name, value: this.state.value, readOnly: true })
             );
-        },
-        componentDidMount: function () {
+        }
+
+        componentDidMount() {
             var that = this;
             $.fn.bootstrapSlider = $.fn.bootstrapSlider || $.fn.slider;
             this.mySlider = $(ReactDOM.findDOMNode(this)).bootstrapSlider({
@@ -34,11 +37,13 @@ var SliderNative = function(
                     value: e.value.newValue
                 });
             });
-        },
-        componentDidUpdate: function () {
+        }
+
+        componentDidUpdate() {
             this.updateSliderValues();
-        },
-        updateSliderValues: function () {
+        }
+
+        updateSliderValues() {
 
             $(this.mySlider)
                 .bootstrapSlider("setAttribute", "min", parseInt(this.props.min) )
@@ -59,7 +64,7 @@ var SliderNative = function(
                 }
             }
         }
-    });
+    }
 }
 
 module.exports = SliderNative(require('react'), require('react-dom'), require('./javascript/libs/bootstrap-slider'));

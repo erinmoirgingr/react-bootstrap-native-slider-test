@@ -4,16 +4,18 @@
 
 
 
-var Demo = React.createClass({
-    getInitialState: function (){
-        return {
+class Demo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             currentValue: this.props.startValue,
             min: this.props.min,
             max: this.props.max,
             step: this.props.step
         };
-    },
-    render: function() {
+    }
+
+    render() {
         var newValue = this.state.currentValue;
         // TODO: Replace this with bootstrap version
         return (
@@ -31,12 +33,14 @@ var Demo = React.createClass({
                 <button onClick={this.changeAxes}>Change axes!</button>
             </div>
             );
-    },
-    changeValue: function(e) {
+    }
+
+    changeValue(e) {
         console.log("changeValue");
         this.setState({currentValue: e.target.value});
-    },
-    changeAxes: function (){
+    }
+
+    changeAxes(){
         this.setState({
             currentValue: 500,
             min: 0,
@@ -44,9 +48,9 @@ var Demo = React.createClass({
             step: 100
         });
     }
-});
+}
 
-React.render(<Demo
+ReactDOM.render(<Demo
         startValue={3000}
         max={20000}
         min={1000}

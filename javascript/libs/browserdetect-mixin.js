@@ -1,6 +1,8 @@
 var BrowserDetectMixin = {
 	// Lifted from:
-	// http://stackoverflow.com/questions/19999388/jquery-check-if-user-is-using-ie/21712356#21712356
+    // http://stackoverflow.com/questions/19999388/jquery-check-if-user-is-using-ie/21712356#21712356
+    
+    // i just put this directly into the SliderNativeBootstrap component
     detectIE: function () {
         var ua = window.navigator.userAgent;
 

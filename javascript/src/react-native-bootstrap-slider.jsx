@@ -1,6 +1,6 @@
-var SliderNative = React.createClass({
+class SliderNative extends React.Component {
     // Front end to the HTML5 native slider, i.e <input type="range">
-    render: function () {
+    render() {
         return (
             <input id="mySlider"
                 type="range"
@@ -11,25 +11,27 @@ var SliderNative = React.createClass({
                 onChange={this.handleOnChange}
                 step={this.props.step} />
         );
-    },
-    handleOnChange: function () {
+    }
+
+    handleOnChange() {
         // Nothing to do here.  Only present to prevent reactjs warning
         // about onChange not being present
     }
-});
+}
 
-var BootstrapSlider = React.createClass({
+class BootstrapSlider extends React.Component {
     // Bootstrap-slider.js from https://github.com/seiyria/bootstrap-slider
-    render: function () {
+    render() {
         // The slider's an input.  That's all we need.  We'll do the rest in JS.
         return (
                 <input />
             );
-    },
-    componentDidMount: function () {
+    }
+
+    componentDidMount() {
         var that = this;
         $.fn.bootstrapSlider = $.fn.bootstrapSlider || $.fn.slider;
-        this.mySlider = $(this.getDOMNode()).bootstrapSlider({
+        this.mySlider = $(ReactDOM.findDOMNode(this)).bootstrapSlider({
             "tooltip": this.props.tooltip || "show"
         });
         this.updateSliderValues();
@@ -40,11 +42,13 @@ var BootstrapSlider = React.createClass({
             fakeEvent.target.value = e.value.newValue;
             that.props.handleChange(fakeEvent);
         });
-    },
-    componentDidUpdate: function() {
+    }
+
+    componentDidUpdate() {
         this.updateSliderValues();
-    },
-    updateSliderValues: function() {
+    }
+
+    updateSliderValues() {
         $(this.mySlider)
             .bootstrapSlider("setAttribute", "min", this.props.min)
             .bootstrapSlider("setAttribute", "max", this.props.max)
@@ -64,12 +68,37 @@ var BootstrapSlider = React.createClass({
             }
         }
     }
-});
+}
 
 
-var SliderNativeBootstrap = React.createClass({
-    mixins: [BrowserDetectMixin],
-    componentWillMount: function () {
+class SliderNativeBootstrap extends React.Component {
+    detectIE() {
+        var ua = window.navigator.userAgent;
+
+        var msie = ua.indexOf('MSIE ');
+        if (msie > 0) {
+            // IE 10 or older => return version number
+            return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+        }
+
+        var trident = ua.indexOf('Trident/');
+        if (trident > 0) {
+            // IE 11 => return version number
+            var rv = ua.indexOf('rv:');
+            return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+        }
+
+        var edge = ua.indexOf('Edge/');
+        if (edge > 0) {
+           // IE 12 => return version number
+           return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+        }
+
+        // other browser
+        return false;
+    }
+    
+    componentWillMount() {
         // Although IE10+ displays the native range control,it:
         //      a) looks crap
         //      b) doesn't respond to its Input or Change events properly.
@@ -87,11 +116,10 @@ var SliderNativeBootstrap = React.createClass({
             var input = document.createElement('input');
             input.setAttribute('type', 'range');
             this.supportsRange = input.type !== "text" ? true : false;        
-        }
+        }    
+    }
 
-        
-    },
-    render: function () {
+    render() {
         var polyfill = typeof this.props.polyfill == "undefined" ? true : this.props.polyfill;
         if(polyfill) {
             if(this.supportsRange) {
@@ -111,4 +139,4 @@ var SliderNativeBootstrap = React.createClass({
             );            
         }
     }
-});
+}
