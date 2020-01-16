@@ -4,7 +4,8 @@
   "description": "Native Slider with Boostrap Slider failover component for React",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "jsx react-native-bootstrap-slider.jsx > index.js"
+    "build": "jsx javascript/src/react-native-bootstrap-slider.jsx > index.js",
+    "do_thing": "cat javascript/src/react-native-bootstrap-slider.jsx"
   },
   "main": "index.js",
   "browserify": {
