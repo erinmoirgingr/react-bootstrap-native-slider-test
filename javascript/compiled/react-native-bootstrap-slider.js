@@ -2,13 +2,13 @@ var SliderNative = React.createClass({displayName: "SliderNative",
     // Front end to the HTML5 native slider, i.e <input type="range">
     render: function () {
         return (
-            React.createElement("input", {id: "mySlider", 
-                type: "range", 
-                value: this.props.value, 
-                min: this.props.min, 
-                max: this.props.max, 
-                onInput: this.props.handleChange, 
-                onChange: this.handleOnChange, 
+            React.createElement("input", {id: "mySlider",
+                type: "range",
+                value: this.props.value,
+                min: this.props.min,
+                max: this.props.max,
+                onInput: this.props.handleChange,
+                onChange: this.handleOnChange,
                 step: this.props.step})
         );
     },
@@ -86,10 +86,10 @@ var SliderNativeBootstrap = React.createClass({displayName: "SliderNativeBootstr
             // type is set to.
             var input = document.createElement('input');
             input.setAttribute('type', 'range');
-            this.supportsRange = input.type !== "text" ? true : false;        
+            this.supportsRange = input.type !== "text" ? true : false;
         }
 
-        
+
     },
     render: function () {
         var polyfill = typeof this.props.polyfill == "undefined" ? true : this.props.polyfill;
@@ -108,7 +108,9 @@ var SliderNativeBootstrap = React.createClass({displayName: "SliderNativeBootstr
         else {
             return (
                 React.createElement(BootstrapSlider, React.__spread({},  this.props))
-            );            
+            );
         }
     }
 });
+
+export default SliderNativeBootstrap;

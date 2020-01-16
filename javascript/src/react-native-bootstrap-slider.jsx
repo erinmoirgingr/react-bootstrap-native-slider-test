@@ -97,7 +97,7 @@ class SliderNativeBootstrap extends React.Component {
         // other browser
         return false;
     }
-    
+
     componentWillMount() {
         // Although IE10+ displays the native range control,it:
         //      a) looks crap
@@ -115,8 +115,8 @@ class SliderNativeBootstrap extends React.Component {
             // type is set to.
             var input = document.createElement('input');
             input.setAttribute('type', 'range');
-            this.supportsRange = input.type !== "text" ? true : false;        
-        }    
+            this.supportsRange = input.type !== "text" ? true : false;
+        }
     }
 
     render() {
@@ -136,7 +136,9 @@ class SliderNativeBootstrap extends React.Component {
         else {
             return (
                 <BootstrapSlider {...this.props} />
-            );            
+            );
         }
     }
 }
+
+export default SliderNativeBootstrap;

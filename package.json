@@ -7,7 +7,7 @@
     "build": "jsx javascript/src/react-native-bootstrap-slider.jsx > index.js",
     "do_thing": "cat javascript/src/react-native-bootstrap-slider.jsx"
   },
-  "main": "index.js",
+  "main": "javascript/compiled/react-native-bootstrap-slider.js",
   "browserify": {
     "transform": [
       "reactify"
