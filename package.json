@@ -4,9 +4,10 @@
   "description": "Native Slider with Boostrap Slider failover component for React",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "jsx javascript/src/react-native-bootstrap-slider.jsx > index.js"
+    "build": "jsx javascript/src/react-native-bootstrap-slider.jsx > index.js",
+    "dist": "webpack -p --config webpack.config.js"
   },
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "browserify": {
     "transform": [
       "reactify"
@@ -35,7 +36,15 @@
     "jquery": ""
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
     "browserify": "^9.0.3",
-    "react-tools": "~0.11.2"
+    "css-loader": "^3.4.2",
+    "react-tools": "~0.11.2",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
