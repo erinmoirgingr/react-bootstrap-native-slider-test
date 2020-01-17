@@ -4,10 +4,9 @@
   "description": "Native Slider with Boostrap Slider failover component for React",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "jsx javascript/src/react-native-bootstrap-slider.jsx > index.js",
-    "do_thing": "cat javascript/src/react-native-bootstrap-slider.jsx"
+    "build": "jsx javascript/src/react-native-bootstrap-slider.jsx > index.js"
   },
-  "main": "javascript/compiled/react-native-bootstrap-slider.js",
+  "main": "index.js",
   "browserify": {
     "transform": [
       "reactify"
@@ -30,9 +29,7 @@
   "author": "Michael Brown <brownieboy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bootstrap-slider": "^4"
-  },
-  "peerDependencies": {
+    "bootstrap-slider": "^4",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "jquery": ""
