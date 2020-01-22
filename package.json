@@ -30,7 +30,7 @@
   "author": "Michael Brown <brownieboy@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bootstrap-slider": "^4",
+    "bootstrap-slider": "^4"
   },
   "peerDependencies": {
     "react": "^16.12.0",
