@@ -7,7 +7,7 @@
     "build": "jsx javascript/src/react-native-bootstrap-slider.jsx > index.js",
     "dist": "webpack -p --config webpack.config.js"
   },
-  "main": "dist/bundle.js",
+  "main": "index.js",
   "browserify": {
     "transform": [
       "reactify"
