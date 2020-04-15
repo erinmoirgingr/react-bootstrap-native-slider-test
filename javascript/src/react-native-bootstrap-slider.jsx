@@ -125,6 +125,7 @@ class SliderNativeBootstrap extends React.Component {
     }
 
     render() {
+        debugger;
         var polyfill = typeof this.props.polyfill == "undefined" ? true : this.props.polyfill;
         if(polyfill) {
             if(this.supportsRange) {

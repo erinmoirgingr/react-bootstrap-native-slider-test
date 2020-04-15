@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
 
-import './css/bootstrap-slider.css';
+import "../../css/bootstrap-slider";
 
 class SliderNative extends React.Component {
     // Front end to the HTML5 native slider, i.e <input type="range">
@@ -125,6 +125,7 @@ class SliderNativeBootstrap extends React.Component {
     }
 
     render() {
+        debugger;
         var polyfill = typeof this.props.polyfill == "undefined" ? true : this.props.polyfill;
         if(polyfill) {
             if(this.supportsRange) {
