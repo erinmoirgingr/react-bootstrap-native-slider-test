@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
 
-import "../../css/bootstrap-slider";
+import './css/bootstrap-slider.css';
 
 class SliderNative extends React.Component {
     // Front end to the HTML5 native slider, i.e <input type="range">
